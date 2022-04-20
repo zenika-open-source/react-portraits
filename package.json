@@ -1,38 +1,29 @@
 {
   "name": "react-portraits",
-  "version": "1.0.0",
-  "description": "Powerful, lightweight and fully customizable portraits component for React apps.",
+  "version": "0.1.0",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [ "dist", "README.md" ],
-  "scripts": {
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "sass": "node-sass src/lib/components/styles/main.scss src/App.css -w",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
-    "eject": "react-scripts eject"
-  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "node-sass": "^5.0.0",
-    "web-vitals": "^1.0.1"
-  },
-  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12"
+    "react-scripts": "5.0.0",
+    "react-spring": "^9.4.4",
+    "web-vitals": "^2.1.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FourmiPanda/react-portraits.git"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rimraf dist && set NODE_ENV=production && babel src/lib --out-dir dist --copy-files",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -52,16 +43,10 @@
       "last 1 safari version"
     ]
   },
-  "keywords": [
-    "react",
-    "portrait",
-    "team",
-    "animated"
-  ],
-  "author": "FourmiPanda",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FourmiPanda/react-portraits/issues"
-  },
-  "homepage": "https://github.com/FourmiPanda/react-portraits#readme"
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "rimraf": "^3.0.2"
+  }
 }
