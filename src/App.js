@@ -5,6 +5,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import StopIcon from '@mui/icons-material/Stop';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CheckIcon from '@mui/icons-material/Check';
 import {ButtonGroup, Box, Switch, AppBar, Button, CssBaseline, Grid, Toolbar, Typography, Link, GlobalStyles, Container, IconButton} from '@mui/material';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
@@ -187,6 +189,7 @@ function App() {
 
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
+
   const changeTheme = () => {
     setIsDarkTheme(!isDarkTheme);
   };
@@ -199,7 +202,16 @@ function App() {
     console.log("Next team members...")
 
     setIndex((index + 1)%portraits.length)
+    e.preventDefault();
+  }
 
+  const [isCopyNpmCommandChecked, setIsCopyNpmCommandChecked] = useState(false);
+
+  function copyNpmCommand(e) {
+    navigator.clipboard.writeText("npm install react-portraits")
+    if(!isCopyNpmCommandChecked) {
+      setIsCopyNpmCommandChecked(true)
+    }
   }
 
   return (
@@ -257,11 +269,15 @@ function App() {
           <Portraits portraits={portraits} index={index} />
         </Box>
 
-        <Button style={{marginTop: '15px'}} href="https://github.com/FourmiPanda/react-portraits" target="_blank" color="secondary" variant="text" disableRipple startIcon={<GitHubIcon />}>
+        <Button style={{marginTop: '15px' , textTransform: 'none'}} href="https://github.com/FourmiPanda/react-portraits" target="_blank" color="secondary" variant="text" disableRipple startIcon={<GitHubIcon />}>
           Star on GitHub
         </Button>
-        <Button style={{marginTop: '15px'}} color="secondary" variant="contained">
+        <Button style={{marginTop: '15px', marginLeft: '15px' , textTransform: 'none'}} color="secondary" variant="contained">
           Get started
+        </Button>
+        <br/>
+        <Button size="large" style={{marginTop: '15px', textTransform: 'none'}} onClick={copyNpmCommand}  disableRipple color='secondary' variant="outlined" endIcon={isCopyNpmCommandChecked ? <CheckIcon /> : <ContentCopyIcon />}>
+          npm install react-portraits
         </Button>
 
       </Container>
