@@ -1,6 +1,50 @@
 import Portraits from './lib/components/Portraits';
 import React, { useState } from 'react';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import StopIcon from '@mui/icons-material/Stop';
+import {ButtonGroup, Box, Switch, AppBar, Button, CssBaseline, Grid, Toolbar, Typography, Link, GlobalStyles, Container, IconButton} from '@mui/material';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+
 import './App.css';
+
+const light = createTheme({
+  mode: "light",
+  palette: {
+    primary: {
+      light: '#474b52',
+      main: '#20232a',
+      dark: '#000000',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#9affff',
+      main: '#61dafb',
+      dark: '#10a8c8',
+      contrastText: '#000',
+    },
+  },
+})
+
+const dark = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      light: '#474b52',
+      main: '#20232a',
+      dark: '#000000',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#9affff',
+      main: '#61dafb',
+      dark: '#10a8c8',
+      contrastText: '#000',
+    },
+  },
+})
 
 const portraits = [
   {
@@ -54,8 +98,98 @@ const portraits = [
 
 ]
 
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="left" {...props}>
+       {' Released under the '}
+       <Link color="inherit" href="https://opensource.org/licenses/MIT">
+        MIT License
+        </Link>{' '}.<br/>
+      {'Made with ❤️ by '}
+      <Link color="inherit" href="https://oss.zenika.com/">
+        Zenika
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const footers = [
+  {
+    title: 'Company',
+    description: ['Team', 'History', 'Contact us', 'Locations', 'Privacy policy', 'Terms of use'],
+  },
+  {
+    title: 'Features',
+    description: [
+      'Cool stuff',
+      'Random feature',
+      'Team feature',
+      'Developer stuff',
+      'Another one',
+    ],
+  },
+  {
+    title: 'Resources',
+    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+  }
+];
+
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  width: 62,
+  height: 34,
+  padding: 7,
+  '& .MuiSwitch-switchBase': {
+    margin: 1,
+    padding: 0,
+    transform: 'translateX(6px)',
+    '&.Mui-checked': {
+      color: '#fff',
+      transform: 'translateX(22px)',
+      '& .MuiSwitch-thumb:before': {
+        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+          '#fff',
+        )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`,
+      },
+      '& + .MuiSwitch-track': {
+        opacity: 1,
+        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+      },
+    },
+  },
+  '& .MuiSwitch-thumb': {
+    backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
+    width: 32,
+    height: 32,
+    '&:before': {
+      content: "''",
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      left: 0,
+      top: 0,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+        '#fff',
+      )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
+    },
+  },
+  '& .MuiSwitch-track': {
+    opacity: 1,
+    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+    borderRadius: 20 / 2,
+  },
+}));
+
 function App() {
 
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+  const changeTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
 
   const [index, setIndex] = useState(0)
 
@@ -69,28 +203,101 @@ function App() {
   }
 
   return (
-    
-    <div style={{ display:'flex', 
-              flexDirection:'column', 
-              alignItems:'start', 
-              justifyContent:'center', 
-              gap:'1.5rem', 
-              padding: '5rem' }}>
+    <ThemeProvider theme={isDarkTheme ? dark : light }>
+      <React.Fragment>
+      <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
+      <CssBaseline />
+      <AppBar
+        position="static"
+        color="primary"
+        elevation={0}
+        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+      >
+        <Toolbar sx={{ flexWrap: 'wrap' }}>
+          <img style={{width: "50px", padding: "5px" }} src="react-portraits.svg"/>
+          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+            React portraits
+          </Typography>
+          <nav>
+          <IconButton target="_blank" href="https://github.com/FourmiPanda/react-portraits" color="inherit" aria-label="add to shopping cart">
+            <GitHubIcon />
+          </IconButton>
+          <IconButton color="inherit" aria-label="add to shopping cart">
+            <TwitterIcon />
+          </IconButton>
+          <MaterialUISwitch checked={isDarkTheme} onChange={changeTheme} sx={{ m: 1 }} />
+          </nav>
+        </Toolbar>
+      </AppBar>
+      {/* Hero unit */}
+      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+          React Portraits
+        </Typography>
+        <Typography variant="h5" align="center" color="text.secondary" component="p">
+          Wow, look at this component library. A magnificent team:
+        </Typography>
+      </Container>
+      {/* End hero unit */}
+      <Container className='main-container' maxWidth="md" component="main">
 
-      <h1>React Portraits</h1>
-      <div className='jss67'>
-        <p>Component settings:</p>
+        <ButtonGroup style={{marginBottom: '15px'}} color="inherit" variant="outlined" aria-label="outlined button group">
+          <Button onClick={nextTeamMembers} startIcon={<PlayArrowIcon />}>Play</Button>
+          <Button startIcon={<PauseIcon />}>Pause</Button>
+          <Button startIcon={<StopIcon />}>Stop</Button>
+        </ButtonGroup>
 
-        <button onClick={nextTeamMembers}>next</button>
+        <Box style={{padding: '25px'}} component="div" sx={{ p: 2, border: '1px dashed grey' }}>
+          <Portraits portraits={portraits} index={index} />
+        </Box>
 
-        <p>Wow, look at this component library.</p>
-        <h5>A magnificent team:</h5>
-      </div>
+        <Button style={{marginTop: '15px'}} href="https://github.com/FourmiPanda/react-portraits" target="_blank" color="secondary" variant="text" disableRipple startIcon={<GitHubIcon />}>
+          Star on GitHub
+        </Button>
+        <Button style={{marginTop: '15px'}} color="secondary" variant="contained">
+          Get started
+        </Button>
 
-
-
-      <Portraits portraits={portraits} index={index} />
-    </div>
+      </Container>
+      {/* Footer */}
+      <Container
+        maxWidth="md"
+        component="footer"
+        sx={{
+          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+          mt: 8,
+          py: [3, 6],
+        }}
+      >
+        <Grid style={{textAlign: 'end'}} container spacing={4} justifyContent="end">
+          {footers.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography variant="h6" color="text.primary" gutterBottom>
+                {footer.title}
+              </Typography>
+              <ul>
+                {footer.description.map((item) => (
+                  <li key={item}>
+                    <Link href="#" variant="subtitle1" color="text.secondary">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          ))}
+        </Grid>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+      {/* End footer */}
+      </React.Fragment>
+    </ThemeProvider >
   );
 }
 

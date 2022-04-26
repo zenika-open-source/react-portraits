@@ -1,5 +1,5 @@
 import './styles/Portraits.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSpring, animated, config } from 'react-spring'
 
 function Portraits(props) {
