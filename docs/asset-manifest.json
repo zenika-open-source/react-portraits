@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://fourmipanda.github.io/react-portraits/static/css/main.07c9cb99.css",
+    "main.js": "https://fourmipanda.github.io/react-portraits/static/js/main.4c97365d.js",
+    "index.html": "https://fourmipanda.github.io/react-portraits/index.html",
+    "main.07c9cb99.css.map": "https://fourmipanda.github.io/react-portraits/static/css/main.07c9cb99.css.map",
+    "main.4c97365d.js.map": "https://fourmipanda.github.io/react-portraits/static/js/main.4c97365d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07c9cb99.css",
+    "static/js/main.4c97365d.js"
+  ]
+}
