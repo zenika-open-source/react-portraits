@@ -7,7 +7,32 @@ import PauseIcon from '@mui/icons-material/Pause';
 import StopIcon from '@mui/icons-material/Stop';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckIcon from '@mui/icons-material/Check';
-import {ButtonGroup, Box, Switch, AppBar, Button, CssBaseline, Grid, Toolbar, Typography, Link, GlobalStyles, Container, IconButton} from '@mui/material';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
+import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
+import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
+import {
+  Stack,
+  Slider,
+  Checkbox,
+  FormGroup,
+  FormControlLabel,
+  ToggleButtonGroup, 
+  ToggleButton, 
+  ButtonGroup, 
+  Box, 
+  Switch, 
+  AppBar, 
+  Button, 
+  CssBaseline, 
+  Grid, 
+  Toolbar, 
+  Typography, 
+  Link, 
+  GlobalStyles, 
+  Container, 
+  IconButton } from '@mui/material';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 import './App.css';
@@ -188,16 +213,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 function App() {
 
   const [isDarkTheme, setIsDarkTheme] = useState(true);
-
-
   const changeTheme = () => {
     setIsDarkTheme(!isDarkTheme);
   };
 
   const [index, setIndex] = useState(0)
-
-
-  function nextTeamMembers(e) {
+  const nextTeamMembers = (e) => {
     e.preventDefault();
     console.log("Next team members...")
 
@@ -206,13 +227,30 @@ function App() {
   }
 
   const [isCopyNpmCommandChecked, setIsCopyNpmCommandChecked] = useState(false);
-
-  function copyNpmCommand(e) {
+  const copyNpmCommand = (e) => {
     navigator.clipboard.writeText("npm install react-portraits")
     if(!isCopyNpmCommandChecked) {
       setIsCopyNpmCommandChecked(true)
     }
   }
+
+  const [alignment, setAlignment] = useState('center');
+  const handleAlignment = (event, newAlignment) => {
+    console.log(newAlignment)
+    setAlignment(newAlignment);
+  }
+
+  const [fontSizeValue, setFontSizeValue] =  useState(20);
+  const updateFontSize = (event, newFontSize) => {
+    setFontSizeValue(newFontSize)
+  }
+
+  const [portraitFrameSize, setPortraitFrameSize] = useState(250);
+
+  const updatePortraitFrameSize = (event, newFrameSize) => {
+    setPortraitFrameSize(newFrameSize)
+  }
+
 
   return (
     <ThemeProvider theme={isDarkTheme ? dark : light }>
@@ -226,7 +264,7 @@ function App() {
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <img style={{width: "50px", padding: "5px" }} src="react-portraits.svg"/>
+          <img style={{width: "50px", padding: "5px" }} src="react-portraits.svg" alt="Logo"/>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             React portraits
           </Typography>
@@ -241,8 +279,7 @@ function App() {
           </nav>
         </Toolbar>
       </AppBar>
-      {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+      <Container style={{textAlign: 'center'}} disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography
           component="h1"
           variant="h2"
@@ -255,20 +292,6 @@ function App() {
         <Typography variant="h5" align="center" color="text.secondary" component="p">
           Wow, look at this component library. A magnificent team:
         </Typography>
-      </Container>
-      {/* End hero unit */}
-      <Container className='main-container' maxWidth="md" component="main">
-
-        <ButtonGroup style={{marginBottom: '15px'}} color="inherit" variant="outlined" aria-label="outlined button group">
-          <Button onClick={nextTeamMembers} startIcon={<PlayArrowIcon />}>Play</Button>
-          <Button startIcon={<PauseIcon />}>Pause</Button>
-          <Button startIcon={<StopIcon />}>Stop</Button>
-        </ButtonGroup>
-
-        <Box style={{padding: '25px'}} component="div" sx={{ p: 2, border: '1px dashed grey' }}>
-          <Portraits portraits={portraits} index={index} />
-        </Box>
-
         <Button style={{marginTop: '15px' , textTransform: 'none'}} href="https://github.com/FourmiPanda/react-portraits" target="_blank" color="secondary" variant="text" disableRipple startIcon={<GitHubIcon />}>
           Star on GitHub
         </Button>
@@ -279,6 +302,98 @@ function App() {
         <Button size="large" style={{marginTop: '15px', textTransform: 'none'}} onClick={copyNpmCommand}  disableRipple color='secondary' variant="outlined" endIcon={isCopyNpmCommandChecked ? <CheckIcon /> : <ContentCopyIcon />}>
           npm install react-portraits
         </Button>
+      </Container>
+      <Container className='main-container' maxWidth="md" component="main">
+      <Grid container spacing={8}>
+        <Grid item xs={12} md={9}>
+
+          <Box component="div" sx={{ p: 2, border: '1px dashed grey' }}>
+            <Portraits portraits={portraits} index={index} width={portraitFrameSize} fontSize={fontSizeValue} align={alignment} />
+          </Box>
+
+        </Grid>
+        <Grid item xs={12} md={3}>
+
+          <ButtonGroup style={{marginBottom: '15px', marginTop: '15px'}} color="inherit" variant="outlined" aria-label="outlined button group">
+            <Button onClick={nextTeamMembers} startIcon={<PlayArrowIcon />}>Play</Button>
+            <Button startIcon={<PauseIcon />}>Pause</Button>
+            <Button startIcon={<StopIcon />}>Stop</Button>
+          </ButtonGroup>
+
+          <Box sx={{ width: 300, margin: "auto", textAlign: "start" }}>
+
+            {/* play interval */}
+
+            {/* portrait duration */}
+
+            {/* portrait frame size */}
+
+            <Typography gutterBottom>Width</Typography>
+
+            <Slider
+              color="secondary"
+              size="small"
+              min={10}
+              max={500}
+              value={portraitFrameSize}
+              aria-label="Frame size"
+              valueLabelDisplay="auto"
+              onChange={updatePortraitFrameSize}
+            />
+
+            {/* font size */}
+
+            <Typography gutterBottom>Font size</Typography>
+
+            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+              <TextDecreaseIcon />
+              <Slider 
+                color="secondary" 
+                min={5} 
+                max={50} 
+                aria-label="Font size" 
+                step={5}
+                marks 
+                value={fontSizeValue} 
+                onChange={updateFontSize} />
+              <TextIncreaseIcon />
+            </Stack>
+
+
+            <FormGroup>
+              {/* show play button */}
+              <FormControlLabel control={<Checkbox color='secondary' defaultChecked />} label="show play button" />
+              {/* show index */}
+              <FormControlLabel control={<Checkbox color='secondary'/>} label="show index" />
+            </FormGroup>
+
+            {/* display description : start - between - end */}
+
+            <ToggleButtonGroup
+              color="secondary"
+              style={{marginTop: '15px'}}
+              value={alignment}
+              exclusive
+              onChange={handleAlignment}
+              aria-label="text alignment"
+            >
+              <ToggleButton value="left" aria-label="left aligned">
+                <FormatAlignLeftIcon />
+              </ToggleButton>
+              <ToggleButton value="center" aria-label="centered">
+                <FormatAlignJustifyIcon />
+              </ToggleButton>
+              <ToggleButton value="right" aria-label="right aligned">
+                <FormatAlignRightIcon />
+              </ToggleButton>
+            </ToggleButtonGroup>
+
+          </Box>
+
+        </Grid>
+      </Grid>
+
+
 
       </Container>
       {/* Footer */}
