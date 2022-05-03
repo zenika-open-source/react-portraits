@@ -246,11 +246,14 @@ function App() {
   }
 
   const [portraitFrameSize, setPortraitFrameSize] = useState(250);
-
   const updatePortraitFrameSize = (event, newFrameSize) => {
     setPortraitFrameSize(newFrameSize)
   }
 
+  const [textOnly, setTextOnly] = useState(false);
+  const updateTextOnly = (event) => {
+    setTextOnly(event.target.checked)
+  }
 
   return (
     <ThemeProvider theme={isDarkTheme ? dark : light }>
@@ -308,7 +311,14 @@ function App() {
         <Grid item xs={12} md={9}>
 
           <Box component="div" sx={{ p: 2, border: '1px dashed grey' }}>
-            <Portraits portraits={portraits} index={index} width={portraitFrameSize} fontSize={fontSizeValue} align={alignment} />
+            <Portraits 
+              portraits={portraits} 
+              index={index} 
+              width={portraitFrameSize} 
+              fontSize={fontSizeValue} 
+              align={alignment} 
+              textOnly={textOnly}
+            />
           </Box>
 
         </Grid>
@@ -361,6 +371,8 @@ function App() {
 
 
             <FormGroup>
+              {/* text only */}
+              <FormControlLabel control={<Checkbox onChange={updateTextOnly} value={textOnly} color='secondary'/>} label="text only" />
               {/* show play button */}
               <FormControlLabel control={<Checkbox color='secondary' defaultChecked />} label="show play button" />
               {/* show index */}

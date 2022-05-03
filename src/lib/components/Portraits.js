@@ -20,7 +20,7 @@ function Portraits(props) {
         config: config.molasses
     })
 
-    console.log(rightAnim)
+    console.log(props.textOnly)
 
   
   return (
@@ -31,7 +31,7 @@ function Portraits(props) {
                 <animated.div style={leftAnim}>
                     <span className='skill-text' style={{fontSize: `${props.fontSize}px`}}>{props.portraits[props.index].leftPortrait.name}</span>
 
-                    <div>
+                    <div style={{display: props.textOnly ? "none" : ""}}>
                         {props.portraits[props.index].leftPortrait.skills.map((v,i) => {
                             return <img alt="Skill" key={"left-"+i} className='skill-img' src={v.img} />
                         })}
@@ -39,7 +39,7 @@ function Portraits(props) {
                 </animated.div>
                 <animated.div style={{...rightAnim, display: props.align === "center" ? "none" : "", marginRight: "20px"}}>
                     <span className='skill-text' style={{fontSize: `${props.fontSize}px`}}>{props.portraits[0].rightPortrait.name}</span>
-                    <div>
+                    <div style={{display: props.textOnly ? "none" : ""}}>
                         {props.portraits[props.index].rightPortrait.skills.map((v,i) => {
                                 return <img alt="Skill"key={"right-"+i} className='skill-img' src={v.img} />
                             })}
@@ -60,7 +60,7 @@ function Portraits(props) {
             <animated.div style={leftAnim}>
                 <span className='skill-text' style={{fontSize: `${props.fontSize}px`}}>{props.portraits[props.index].leftPortrait.name}</span>
 
-                <div>
+                <div style={{display: props.textOnly ? "none" : ""}}>
                     {props.portraits[props.index].leftPortrait.skills.map((v,i) => {
                         return <img alt="Skill" key={"left-"+i} className='skill-img' src={v.img} />
                     })}
@@ -69,7 +69,7 @@ function Portraits(props) {
 
             <animated.div style={{...rightAnim, display: props.align === "center" ? "none" : "", marginLeft: "20px"}}>
                 <span className='skill-text' style={{fontSize: `${props.fontSize}px`}}>{props.portraits[0].rightPortrait.name}</span>
-                <div>
+                <div style={{display: props.textOnly ? "none" : ""}}>
                     {props.portraits[props.index].rightPortrait.skills.map((v,i) => {
                             return <img alt="Skill"key={"right-"+i} className='skill-img' src={v.img} />
                         })}
