@@ -1,14 +1,16 @@
+# ⚠️ CURRENTLY UNDER DEVELOPMENT ⚠️
 
 # React Portraits
 
 Powerful, lightweight and fully customizable portraits component for React apps.
 
-![Logo](https://drive.google.com/uc?id=1nuAc9sa6lBLtRfU3BpB2A9Ra_osj9PqF)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zenika-open-source/react-portraits/main/public/react-portraits.svg" alt="logo" width="300"/>
+</p>
 
-
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+![licence](https://img.shields.io/github/license/zenika-open-source/react-portraits)
+![version](https://img.shields.io/github/package-json/v/zenika-open-source/react-portraits)
+![commit](https://img.shields.io/github/commit-activity/m/zenika-open-source/react-portraits)
 ![with love by zenika](https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F%20by-Zenika-b51432.svg?link=https://oss.zenika.com)
 
 ## Features

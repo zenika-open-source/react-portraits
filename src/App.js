@@ -272,10 +272,10 @@ function App() {
             React portraits
           </Typography>
           <nav>
-          <IconButton target="_blank" href="https://github.com/FourmiPanda/react-portraits" color="inherit" aria-label="add to shopping cart">
+          <IconButton target="_blank" href="https://github.com/zenika-open-source/react-portraits" color="inherit" aria-label="github link">
             <GitHubIcon />
           </IconButton>
-          <IconButton color="inherit" aria-label="add to shopping cart">
+          <IconButton target="_blank" href="https://twitter.com/zenikaoss" color="inherit" aria-label="twitter link">
             <TwitterIcon />
           </IconButton>
           <MaterialUISwitch checked={isDarkTheme} onChange={changeTheme} sx={{ m: 1 }} />
@@ -295,7 +295,7 @@ function App() {
         <Typography variant="h5" align="center" color="text.secondary" component="p">
           Wow, look at this component library. A magnificent team:
         </Typography>
-        <Button style={{marginTop: '15px' , textTransform: 'none'}} href="https://github.com/FourmiPanda/react-portraits" target="_blank" color="secondary" variant="text" disableRipple startIcon={<GitHubIcon />}>
+        <Button style={{marginTop: '15px' , textTransform: 'none'}} href="https://github.com/zenika-open-source/react-portraits" target="_blank" color="secondary" variant="text" disableRipple startIcon={<GitHubIcon />}>
           Star on GitHub
         </Button>
         <Button style={{marginTop: '15px', marginLeft: '15px' , textTransform: 'none'}} color="secondary" variant="contained">

@@ -1,6 +1,6 @@
 {
   "name": "react-portraits",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FourmiPanda/react-portraits.git"
+    "url": "git+https://github.com/zenika-open-source/react-portraits.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

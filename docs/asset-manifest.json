@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://fourmipanda.github.io/react-portraits/static/css/main.60d5e044.css",
-    "main.js": "https://fourmipanda.github.io/react-portraits/static/js/main.994aa2b1.js",
-    "index.html": "https://fourmipanda.github.io/react-portraits/index.html",
-    "main.60d5e044.css.map": "https://fourmipanda.github.io/react-portraits/static/css/main.60d5e044.css.map",
-    "main.994aa2b1.js.map": "https://fourmipanda.github.io/react-portraits/static/js/main.994aa2b1.js.map"
+    "main.css": "https://zenika-open-source.github.io/react-portraits/static/css/main.60d5e044.css",
+    "main.js": "https://zenika-open-source.github.io/react-portraits/static/js/main.8a4a554c.js",
+    "index.html": "https://zenika-open-source.github.io/react-portraits/index.html",
+    "main.60d5e044.css.map": "https://zenika-open-source.github.io/react-portraits/static/css/main.60d5e044.css.map",
+    "main.8a4a554c.js.map": "https://zenika-open-source.github.io/react-portraits/static/js/main.8a4a554c.js.map"
   },
   "entrypoints": [
     "static/css/main.60d5e044.css",
-    "static/js/main.994aa2b1.js"
+    "static/js/main.8a4a554c.js"
   ]
 }
