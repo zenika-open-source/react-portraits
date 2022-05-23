@@ -4,7 +4,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import StopIcon from '@mui/icons-material/Stop';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckIcon from '@mui/icons-material/Check';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
@@ -20,7 +19,6 @@ import {
   FormControlLabel,
   ToggleButtonGroup, 
   ToggleButton, 
-  ButtonGroup, 
   Box, 
   Switch, 
   AppBar, 
@@ -217,15 +215,6 @@ function App() {
     setIsDarkTheme(!isDarkTheme);
   };
 
-  const [index, setIndex] = useState(0)
-  const nextTeamMembers = (e) => {
-    e.preventDefault();
-    console.log("Next team members...")
-
-    setIndex((index + 1)%portraits.length)
-    e.preventDefault();
-  }
-
   const [isCopyNpmCommandChecked, setIsCopyNpmCommandChecked] = useState(false);
   const copyNpmCommand = (e) => {
     navigator.clipboard.writeText("npm install react-portraits")
@@ -236,8 +225,14 @@ function App() {
 
   const [alignment, setAlignment] = useState('center');
   const handleAlignment = (event, newAlignment) => {
-    console.log(newAlignment)
+    if(!newAlignment) return;
     setAlignment(newAlignment);
+  }
+
+  const [animationState, setAnimationState] = useState('running');
+  const handleAnimationState = (event, newState) => {
+    if(!newState) return;
+    setAnimationState(newState);
   }
 
   const [fontSizeValue, setFontSizeValue] =  useState(20);
@@ -248,6 +243,16 @@ function App() {
   const [portraitFrameSize, setPortraitFrameSize] = useState(250);
   const updatePortraitFrameSize = (event, newFrameSize) => {
     setPortraitFrameSize(newFrameSize)
+  }
+
+  const [descriptionWidth, setDescriptionWidth] = useState(200);
+  const updateDescriptionWidth = (event, descriptionWidth) => {
+    setDescriptionWidth(descriptionWidth)
+  }
+
+  const [skillsWidth, setSkillsWidth] = useState(55);
+  const updateSkillsWidth = (event, skillsWidth) => {
+    setSkillsWidth(skillsWidth)
   }
 
   const [textOnly, setTextOnly] = useState(false);
@@ -309,28 +314,47 @@ function App() {
       <Container className='main-container' maxWidth="md" component="main">
       <Grid container spacing={8}>
         <Grid item xs={12} md={9}>
+          <Box component="div" style={{width: "max-content"}} sx={{ p: 2, border: '1px dashed grey' }}>
+          
+          {/* *-*-*-*-*-*-*-*-*-* PORTRAITS COMPONENT *-*-*-*-*-*-*-*-*-* */}
 
-          <Box component="div" sx={{ p: 2, border: '1px dashed grey' }}>
             <Portraits 
               portraits={portraits} 
-              index={index} 
               width={portraitFrameSize} 
+              descriptionWidth={descriptionWidth}
+              animationState={animationState}
+              skillsWidth={skillsWidth} 
               fontSize={fontSizeValue} 
               align={alignment} 
               textOnly={textOnly}
             />
-          </Box>
 
+          {/* *-*-*-*-*-*-*-*-*-* *-*-*-*-*-*-*-*-*-* *-*-*-*-*-*-*-*-*-* */}
+
+          </Box>
         </Grid>
         <Grid item xs={12} md={3}>
 
-          <ButtonGroup style={{marginBottom: '15px', marginTop: '15px'}} color="inherit" variant="outlined" aria-label="outlined button group">
-            <Button onClick={nextTeamMembers} startIcon={<PlayArrowIcon />}>Play</Button>
-            <Button startIcon={<PauseIcon />}>Pause</Button>
-            <Button startIcon={<StopIcon />}>Stop</Button>
-          </ButtonGroup>
+
+
 
           <Box sx={{ width: 300, margin: "auto", textAlign: "start" }}>
+
+            <Typography gutterBottom>Animation state</Typography>
+
+            <ToggleButtonGroup
+              value={animationState}
+              exclusive
+              onChange={handleAnimationState}
+              aria-label="text alignment"
+            >
+              <ToggleButton value="running" aria-label="left aligned">
+                <PlayArrowIcon /> Play
+              </ToggleButton>
+              <ToggleButton value="paused" aria-label="centered">
+                <PauseIcon /> Pause
+              </ToggleButton>
+            </ToggleButtonGroup>
 
             {/* play interval */}
 
@@ -338,7 +362,7 @@ function App() {
 
             {/* portrait frame size */}
 
-            <Typography gutterBottom>Width</Typography>
+            <Typography gutterBottom>Portraits width</Typography>
 
             <Slider
               color="secondary"
@@ -349,6 +373,36 @@ function App() {
               aria-label="Frame size"
               valueLabelDisplay="auto"
               onChange={updatePortraitFrameSize}
+            />
+
+            {/* description width */}
+
+            <Typography gutterBottom>Description width</Typography>
+
+            <Slider
+              color="secondary"
+              size="small"
+              min={10}
+              max={500}
+              value={descriptionWidth}
+              aria-label="Frame size"
+              valueLabelDisplay="auto"
+              onChange={updateDescriptionWidth}
+            />
+
+            {/* skills width */}
+
+            <Typography gutterBottom>Skills width</Typography>
+
+            <Slider
+              color="secondary"
+              size="small"
+              min={10}
+              max={500}
+              value={skillsWidth}
+              aria-label="Frame size"
+              valueLabelDisplay="auto"
+              onChange={updateSkillsWidth}
             />
 
             {/* font size */}
