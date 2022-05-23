@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://zenika-open-source.github.io/react-portraits/static/css/main.60d5e044.css",
-    "main.js": "https://zenika-open-source.github.io/react-portraits/static/js/main.8a4a554c.js",
+    "main.css": "https://zenika-open-source.github.io/react-portraits/static/css/main.7761b398.css",
+    "main.js": "https://zenika-open-source.github.io/react-portraits/static/js/main.e0829357.js",
     "index.html": "https://zenika-open-source.github.io/react-portraits/index.html",
-    "main.60d5e044.css.map": "https://zenika-open-source.github.io/react-portraits/static/css/main.60d5e044.css.map",
-    "main.8a4a554c.js.map": "https://zenika-open-source.github.io/react-portraits/static/js/main.8a4a554c.js.map"
+    "main.7761b398.css.map": "https://zenika-open-source.github.io/react-portraits/static/css/main.7761b398.css.map",
+    "main.e0829357.js.map": "https://zenika-open-source.github.io/react-portraits/static/js/main.e0829357.js.map"
   },
   "entrypoints": [
-    "static/css/main.60d5e044.css",
-    "static/js/main.8a4a554c.js"
+    "static/css/main.7761b398.css",
+    "static/js/main.e0829357.js"
   ]
 }
